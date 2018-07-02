@@ -1,4 +1,4 @@
-# web 开发者实战
+# web 开发者实战指南
 
 ## 第一章、初始web开发
 
@@ -61,3 +61,305 @@
 [greenlet](http://www.bjhee.com/greenlet.html)
 
 [单元测试](https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/00143191629979802b566644aa84656b50cd484ec4a7838000)
+
+## 第二章、环境搭建
+
+### 1.ubuntu下环境搭建
+
+【1】https://www.jianshu.com/p/3bb01345f28a
+
+【2】http://xiaocong.github.io/blog/2013/06/18/customize-python-dev-environment-on-ubuntu/
+
+### 2.包管理和虚拟环境
+
+【1】http://blog.zengrong.net/post/2169.html
+
+【2】https://www.jianshu.com/p/eb46d00fc7ba
+
+【3】https://www.cnblogs.com/wilber2013/p/4769467.html
+
+## 第三章、Flask进阶
+
+### 1.Flask的信号机制
+
+【1】http://www.bjhee.com/flask-ad2.html
+
+【2】http://flask123.sinaapp.com/article/53/
+
+### 2.Flask的扩展
+
+【1】https://wizardforcel.gitbooks.io/flask-extension-docs/content/
+
+### 3.操作MySQL
+
+【1】https://wing324.github.io/2017/02/25/%E4%BD%BF%E7%94%A8flask-sqlalchemy%E7%8E%A9%E8%BD%ACMySQL/
+
+### 4.Werkzeug
+
+> 在这个教程中，我们将一起用 Werkzeug 创建一个短网址服务。请注意，Werkzeug 并不是 一个框架，它是一个 WSGI 工具集的库，你可以通过它来创建你自己的框架或 Web 应用。 
+
+【1】http://werkzeug-docs-cn.readthedocs.io/zh_CN/latest/tutorial.html
+
+## 第五章、REST和Ajax
+
+### 1.about ajax
+
+【1】https://blog.csdn.net/OBKoro1/article/details/72832865
+
+【2】https://www.zhihu.com/question/31305968
+
+【3】http://blog.51cto.com/cnn237111/1038080
+
+【4】https://www.nowcoder.com/questionTerminal/75a61e3650b04027abf11effdfe05b93
+
+### 2.Restful
+
+简而言之就是 **URL定位资源，用HTTP动词（GET,POST,DELETE,DETC）描述操作。** 
+
+看Url就知道要什么 看http method就知道干什么 看http status code就知道结果如何 
+
+> 1. REST描述的是在网络中client和server的一种交互形式；REST本身不实用，实用的是如何设计 RESTful API（REST风格的网络接口）；
+> 2. Server提供的RESTful API中，URL中只使用名词来指定资源，原则上不使用动词。“资源”是REST架构或者说整个网络处理的核心。比如：
+>
+> ```
+> http://api.qc.com/v1/newsfeed: 获取某人的新鲜; 
+> 
+> http://api.qc.com/v1/friends: 获取某人的好友列表;
+> 
+> http://api.qc.com/v1/profile: 获取某人的详细信息;
+> 
+> ```
+>
+> 1. 用HTTP协议里的动词来实现资源的添加，修改，删除等操作。即通过HTTP动词来实现资源的状态扭转：
+>
+>    GET    用来获取资源，
+>    POST  用来新建资源（也可以用于更新资源），
+>    PUT    用来更新资源，
+>    DELETE  用来删除资源。比如：
+>
+> ```
+> DELETE http://api.qc.com/v1/friends: 删除某人的好友 （在http parameter指定好友id）
+> 
+> POST http://api.qc.com/v1/friends: 添加好友
+> 
+> UPDATE http://api.qc.com/v1/profile: 更新个人资料
+> 
+> ```
+>
+> 1. Server和Client之间传递某资源的一个表现形式，比如用JSON，XML传输文本，或者用JPG，WebP传输图片等。当然还可以压缩HTTP传输时的数据（on-wire data compression）。
+> 2. 用 HTTP Status Code传递Server的状态信息。比如最常用的 200 表示成功，500 表示Server内部错误等。
+>
+> 主要信息就这么点。最后是要解放思想，Web端不再用之前典型的PHP或JSP架构，而是改为前段渲染和附带处理简单的商务逻辑（比如AngularJS或者BackBone的一些样例）。Web端和Server只使用上述定义的API来传递数据和改变数据状态。格式一般是JSON。iOS和Android同理可得。由此可见，Web，iOS，Android和第三方开发者变为平等的角色通过一套API来共同消费Server提供的服务。
+
+### 3.Restful十大规范
+
+1. 在url接口中推荐使用Https协议，让网络接口更加安全（Https是Http的安全版，即HTTP下加入
+   SSL层，HTTPS的安全基础是SSL，因此加密的详细内容就需要SSL（安全套接层协议））
+
+2. 应该尽量将API部署在专用域名之下。
+
+   > ```
+   > https://api.example.com
+   > ```
+
+   如果确定API很简单，不会有进一步扩展，可以考虑放在主域名下。
+
+   > ```
+   > https://example.org/api/
+   > ```
+
+3. 版本（Versioning）
+
+   应该将API的版本号放入URL。
+
+   > ```
+   > https://api.example.com/v1/
+   > ```
+
+   另一种做法是，将版本号放在HTTP头信息中，但不如放入URL方便和直观。[Github](https://developer.github.com/v3/media/#request-specific-version)采用这种做法。
+
+4. 路径（Endpoint）
+   路径又称"终点"（endpoint），表示API的具体网址。
+
+   在RESTful架构中，每个网址代表一种资源（resource），所以网址中不能有动词，只能有名词，而且所用的名词往往与数据库的表格名对应。一般来说，数据库中的表都是同种记录的"集合"（collection），所以API中的名词也应该使用复数。
+
+   举例来说，有一个API提供动物园（zoo）的信息，还包括各种动物和雇员的信息，则它的路径应该设计成下面这样。
+
+   > - https://api.example.com/v1/zoos
+   > - https://api.example.com/v1/animals
+   > - https://api.example.com/v1/employees
+
+5. HTTP动词
+
+   对于资源的具体操作类型，由HTTP动词表示。
+
+   常用的HTTP动词有下面五个（括号里是对应的SQL命令）。
+
+   > - GET（SELECT）：从服务器取出资源（一项或多项）。
+   > - POST（CREATE）：在服务器新建一个资源。
+   > - PUT（UPDATE）：在服务器更新资源（客户端提供改变后的完整资源）。
+   > - PATCH（UPDATE）：在服务器更新资源（客户端提供改变的属性）。
+   > - DELETE（DELETE）：从服务器删除资源。
+
+   还有两个不常用的HTTP动词。
+
+   > - HEAD：获取资源的元数据。
+   > - OPTIONS：获取信息，关于资源的哪些属性是客户端可以改变的。
+
+   下面是一些例子。
+
+   > - GET /zoos：列出所有动物园
+   > - POST /zoos：新建一个动物园
+   > - GET /zoos/ID：获取某个指定动物园的信息
+   > - PUT /zoos/ID：更新某个指定动物园的信息（提供该动物园的全部信息）
+   > - PATCH /zoos/ID：更新某个指定动物园的信息（提供该动物园的部分信息）
+   > - DELETE /zoos/ID：删除某个动物园
+   > - GET /zoos/ID/animals：列出某个指定动物园的所有动物
+   > - DELETE /zoos/ID/animals/ID：删除某个指定动物园的指定动物
+
+6. 过滤信息（Filtering）如果记录数量很多，服务器不可能都将它们返回给用户。API应该提供参数，过滤返回结果。
+
+   下面是一些常见的参数。
+
+   > - ?limit=10：指定返回记录的数量
+   > - ?offset=10：指定返回记录的开始位置。
+   > - ?page=2&per_page=100：指定第几页，以及每页的记录数。
+   > - ?sortby=name&order=asc：指定返回结果按照哪个属性排序，以及排序顺序。
+   > - ?animal_type_id=1：指定筛选条件
+
+   参数的设计允许存在冗余，即允许API路径和URL参数偶尔有重复。比如，GET /zoo/ID/animals 与 GET /animals?zoo_id=ID 的含义是相同的。
+
+7. 状态码（Status Codes）服务器向用户返回的状态码和提示信息，常见的有以下一些（方括号中是该状态码对应的HTTP动词）。
+
+   > - 200 OK - [GET]：服务器成功返回用户请求的数据，该操作是幂等的（Idempotent）。
+   > - 201 CREATED - [POST/PUT/PATCH]：用户新建或修改数据成功。
+   > - 202 Accepted - [*]：表示一个请求已经进入后台排队（异步任务）
+   > - 204 NO CONTENT - [DELETE]：用户删除数据成功。
+   > - 400 INVALID REQUEST - [POST/PUT/PATCH]：用户发出的请求有错误，服务器没有进行新建或修改数据的操作，该操作是幂等的。
+   > - 401 Unauthorized - [*]：表示用户没有权限（令牌、用户名、密码错误）。
+   > - 403 Forbidden - [*] 表示用户得到授权（与401错误相对），但是访问是被禁止的。
+   > - 404 NOT FOUND - [*]：用户发出的请求针对的是不存在的记录，服务器没有进行操作，该操作是幂等的。
+   > - 406 Not Acceptable - [GET]：用户请求的格式不可得（比如用户请求JSON格式，但是只有XML格式）。
+   > - 410 Gone -[GET]：用户请求的资源被永久删除，且不会再得到的。
+   > - 422 Unprocesable entity - [POST/PUT/PATCH] 当创建一个对象时，发生一个验证错误。
+   > - 500 INTERNAL SERVER ERROR - [*]：服务器发生错误，用户将无法判断发出的请求是否成功。
+
+   状态码的完全列表参见[这里](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html)。
+
+8. 错误处理（Error handling）
+
+   如果状态码是4xx，就应该向用户返回出错信息。一般来说，返回的信息中将error作为键名，出错信息作为键值即可。
+
+   > ```
+   > {
+   >     error: "Invalid API key"
+   > }
+   > ```
+
+9. 返回结果针对不同操作，服务器向用户返回的结果应该符合以下规范。
+
+   > - GET /collection：返回资源对象的列表（数组）
+   > - GET /collection/resource：返回单个资源对象
+   > - POST /collection：返回新生成的资源对象
+   > - PUT /collection/resource：返回完整的资源对象
+   > - PATCH /collection/resource：返回完整的资源对象
+   > - DELETE /collection/resource：返回一个空文档
+
+10. Hypermedia APIRESTful API最好做到Hypermedia，即返回结果中提供链接，连向其他API方法，使得用户不查文档，也知道下一步应该做什么。
+
+    比如，当用户向api.example.com的根目录发出请求，会得到这样一个文档。
+
+    > ```
+    > {"link": {
+    >   "rel":   "collection https://www.example.com/zoos",
+    >   "href":  "https://api.example.com/zoos",
+    >   "title": "List of zoos",
+    >   "type":  "application/vnd.yourformat+json"
+    > }}
+    > ```
+
+    上面代码表示，文档中有一个link属性，用户读取这个属性就知道下一步该调用什么API了。rel表示这个API与当前网址的关系（collection关系，并给出该collection的网址），href表示API的路径，title表示API的标题，type表示返回类型。
+
+    Hypermedia API的设计被称为[HATEOAS](http://en.wikipedia.org/wiki/HATEOAS)。Github的API就是这种设计，访问[api.github.com](https://api.github.com/)会得到一个所有可用API的网址列表。
+
+    > ```
+    > {
+    >   "current_user_url": "https://api.github.com/user",
+    >   "authorizations_url": "https://api.github.com/authorizations",
+    >   // ...
+    > }
+    > ```
+
+    从上面可以看到，如果想获取当前用户的信息，应该去访问[api.github.com/user](https://api.github.com/user)，然后就得到了下面结果。
+
+    > ```
+    > {
+    >   "message": "Requires authentication",
+    >   "documentation_url": "https://developer.github.com/v3"
+    > }
+    > ```
+
+    上面代码表示，服务器给出了提示信息，以及文档的网址。
+
+## 第六章、网站架构
+
+### 1.python应用服务器
+
+> 首先，你知道什么是应用服务器吗？应用服务器通常被描述为是存在于服务器中心架构中间层的一个软件框架。
+>
+> 应用服务器常被看作是一个三层的应用程序，即图形用户界面（GUI）服务器，应用程序（业务逻辑）服务器，以及数据库和事务服务器，目的是为安全及状态维护、数据访问及其持久性提供服务。
+>
+> 对于Web应用程序，应用服务器和Web服务器运行在相同的环境中，应用服务器支持动态网页的创建和服务的部署，比如集群、故障切换、[负载均衡](http://www.codeceo.com/article/balanced-algorithm.html)等，所以开发者只要关注实现业务逻辑即可。
+>
+> 如果还不明白的话，不妨将它看成是一扇神奇的大门——它可以让你写的代码运行在服务器上，并和客户端上的代码相互交流，从而让你能更清楚明白地处理复杂事务。
+
+[科普](https://segmentfault.com/q/1010000007270099)
+
+【1】http://www.codeceo.com/article/6-python-web-server.html
+
+### 2.web服务器nginx
+
+【1】http://www.infoq.com/cn/news/2017/05/Web-server-contention
+
+【2】https://www.jianshu.com/p/4b9e00408837
+
+【3】http://blog.51cto.com/dengqi/1290292
+
+【4】https://lufficc.com/blog/configure-nginx-as-a-web-server
+
+### 3.缓存系统Memcache
+
+【1】https://blog.csdn.net/eric_sunah/article/details/51612316
+
+【2】https://www.jianshu.com/p/56e542deabb2
+
+【3】http://www.runoob.com/memcached/memcached-tutorial.html
+
+### 4.键值对数据库Redis
+
+【1】http://www.cnblogs.com/wupeiqi/articles/5132791.html
+
+【2】https://www.jianshu.com/p/2639549bedc8
+
+【3】http://python.jobbole.com/87305/
+
+### 5.mongodb
+
+> **MongoDB** 是一个基于分布式文件存储的数据库。 由C++ 语言编写。 旨在为WEB 应用提供可扩展的高性能数据存储解决方案。 **MongoDB** 是一个介于关系数据库和非关系数据库之间的产品，是非关系数据库当中功能最丰富，最像关系数据库的。 
+>
+> MongoDB（来自于英文单词“Humongous”，中文含义为“庞大”）是可以应用于各种规模的企业、各个行业以及各类应用程序的开源数据库。作为一个适用于敏捷开发的数据库，MongoDB的数据模式可以随着应用程序的发展而灵活地更新。与此同时，它也为开发人员 提供了传统数据库的功能：二级索引，完整的查询系统以及严格一致性等等。 MongoDB能够使企业更加具有敏捷性和可扩展性，各种规模的企业都可以通过使用MongoDB来创建新的应用，提高与客户之间的工作效率，加快产品上市时间，以及降低企业成本。
+>
+> MongoDB是专为可扩展性，高性能和高可用性而设计的数据库。它可以从单服务器部署扩展到大型、复杂的多数据中心架构。利用内存计算的优势，MongoDB能够提供高性能的数据读写操作。 MongoDB的本地复制和自动故障转移功能使您的应用程序具有企业级的可靠性和操作灵活性。
+
+【1】https://www.jianshu.com/p/5e6030e73718
+
+【2】https://legacy.gitbook.com/book/jockchou/getting-started-with-mongodb/details
+
+【3】https://segmentfault.com/a/1190000012088118
+
+### 6.大型网站架构经验
+
+[小谈大型网站架构设计](https://www.jianshu.com/p/0017ecce05fe)
+
+## 第七章、系统管理
+
