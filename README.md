@@ -367,3 +367,55 @@
 
 ## 第七章、系统管理
 
+### 1.进程管理supervisor
+
+> Supervisor ([http://supervisord.org](http://supervisord.org/)) 是一个用 Python 写的进程管理工具，可以很方便的用来启动、重启、关闭进程（不仅仅是 Python 进程）。除了对单个进程的控制，还可以同时启动、关闭多个进程，比如很不幸的服务器出问题导致所有应用程序都被杀死，此时可以用 supervisor 同时启动所有应用程序而不是一个一个地敲命令启动。 
+
+【1】http://liyangliang.me/posts/2015/06/using-supervisor/
+
+### 2.应用部署fabric
+
+> Fabric是一个Python库，用于简化使用SSH的应用程序部署或系统管理任务。
+>
+> 它提供的操作包括：执行本地或远程shell命令，上传/下载文件，以及其他辅助功能等。
+
+【1】https://www.jianshu.com/p/b04bd5c60441
+
+【2】http://www.bjhee.com/fabric.html
+
+### 3.配置管理saltstack和ansible
+
+[轻松使用SaltStack管理成千上万台服务器（入门教程）](http://blog.51cto.com/xficc/1676968)
+
+[SaltStack使用](http://kuring.me/post/saltstack/)
+
+[saltstack:使用教程之一安装及客户端返回写入MySQL](https://www.cnblogs.com/zhang-shijie/p/5282222.html)
+
+[自动化运维工具Ansible使用介绍](https://www.jianshu.com/p/1bf79764bb6f)
+
+[Ansible中文权威指南](http://ansible-tran.readthedocs.io/en/latest/)
+
+### 4.使用psutil
+
+[psutil](https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001511052957192bb91a56a2339485c8a8c79812b400d49000)
+
+[psutil--跨平台的进程管理](https://www.jianshu.com/p/64e265f663f6)
+
+### 5.使用sentry收集错误信息
+
+[创业公司简单粗暴之路：高效利用Sentry追踪日志发现问题](http://bigsec.com/bigsec-news/wechat-20161220-Sentry)
+
+[ Sentry](https://blog.windrunner.me/tool/sentry.html)
+
+### 6.StatsD 和 Graphite搭建web监控
+
+> **Graphite** 是一个企业级的监控工具，用Python 编写，采用django 框架，sqlite 数据库存储，自有简单文本协议通讯，绘图功能强大。**Graphite**由多个后端和前端组件组成。 后端组件用于存储数值型的时间序列数据。 
+
+[StatsD！次世代系统监控的核心](http://blog.oneapm.com/apm-tech/291.html)
+
+[StatsD 的使用小结](https://www.jianshu.com/p/f6f18cc268a4)
+
+[使用graphite来监控业务系统](https://www.jianshu.com/p/3d98196c4290)
+
+## 第八章、测试和持续继承
+
