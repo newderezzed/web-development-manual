@@ -419,3 +419,138 @@
 
 ## 第八章、测试和持续继承
 
+### 1.使用unittest和doctest测试
+
+**unittest**
+
+> 在将来修改的时候，可以极大程度地保证该模块行为仍然是正确的。 编写单元测试时，我们需要编写一个测试类，从 **unittest**.TestCase 继承。 以 test 开头的方法就是测试方法，不以 test 开头的方法不被认为是测试方法，测试的时候不会被执行。 
+>
+> [单元测试](https://www.liaoxuefeng.com/wikipage/00140137128705556022982cfd844b38d050add8565dcb9000)
+>
+> [Python必会的单元测试框架 —— unittest](https://blog.csdn.net/huilan_same/article/details/52944782)
+
+**doctest**
+
+> doctest 模块会搜索那些看起来像交互式会话的 Python 代码片段，然后尝试执行并验证结果 
+>
+> [详解](https://my.oschina.net/lionets/blog/268542)
+>
+> [Python测试框架doctest](http://liuchunming033.github.io/posts/2016/06/13/python-doctest.html)
+
+### 2.使用pytest和mock
+
+**pytest**
+
+> pytest是python的一种单元测试框架，与python自带的unittest测试框架类似，但是比unittest框架使用起来更简洁，效率更高。 
+>
+> [pytest](https://blog.csdn.net/liuchunming033/article/details/46501653)
+
+**mock**
+
+> mock测试就是在[测试过程](https://baike.baidu.com/item/%E6%B5%8B%E8%AF%95%E8%BF%87%E7%A8%8B)中，对于某些不容易构造或者不容易获取的对象，用一个虚拟的对象来创建以便测试的测试方法。 
+>
+> [python mock基本使用](https://www.cnblogs.com/fnng/p/5648247.html)
+>
+> [Python中Mock的示例](http://python.jobbole.com/87656/)
+
+### 3.持续集成
+
+> 持续集成是一种软件开发实践：许多团队频繁地集成他们的工作，每位成员通常进行 日常集成，进而每天会有多种集成。每个集成会由自动的构建（包括测试）来尽可能快地 检测错误。许多团队发现这种方法可以显著的减少集成问题并且可以使团队的开发更加 快捷。 
+
+[使用Jenkins进行Python项目的持续集成](https://www.jianshu.com/p/caa136e191cd)
+
+[python有什么好用的持续集成工具么？](https://www.zhihu.com/question/21101280)
+
+[持续集成](http://pythonguidecn.readthedocs.io/zh/latest/scenarios/ci.html)
+
+## 第九章、消息队列和Celery 
+
+### 1.使用Beanstalkd 
+
+> Beanstalk 是一个 C 语言实现的消息队列服务。 它提供了通用的接口，最初设计的目的是通过异步运行耗时的任务来减少大量Web应用程序中的页面延迟。针对不同的语言，有不同的 Beanstalkd Client 实现。 Python 里就有 beanstalkc 等。我就是利用 beanstalkc 来作为与 beanstalkd server 通信的工具。
+
+[Python 使用 Beanstalkd 做异步任务处理](https://www.jianshu.com/p/cc9cd2892ff8)
+
+### 2.深入RabbitMQ 
+
+> rabbitMQ是消息队列；想想之前的我们学过队列queue：threading queue（线程queue，多个线程之间进行数据交互）、进程Queue（父进程与子进程进行交互或者同属于同一父进程下的多个子进程进行交互）；如果两个独立的程序，那么之间是不能通过queue进行交互的,这时候我们就需要一个中间代理即rabbitMQ. 
+
+[python之rabbitMQ](https://www.cnblogs.com/0zcl/p/6370088.html)
+
+[python RabbitMQ队列使用（入门篇）](https://www.cnblogs.com/kerwinC/p/5967584.html)
+
+###  3.异步任务队列Celery在Django中的使用
+
+【1】https://www.cnblogs.com/znicy/p/5626040.html
+
+【2】https://my.oschina.net/Kuture/blog/1611371
+
+【3】https://zhuanlan.zhihu.com/p/22304455 
+
+【4】http://yshblog.com/blog/163
+
+【5】http://python.jobbole.com/88276/
+
+## 第十章、服务化
+
+### 1.为什么需要服务化 
+
+【1】https://segmentfault.com/a/1190000010767455
+
+【2】https://www.v2ex.com/t/396828
+
+【3】http://ju.outofmemory.cn/entry/48635
+
+[使用Python 构建服务化基础设施](http://ocgxshkaw.bkt.clouddn.com/6%E3%80%8A%E4%BD%BF%E7%94%A8%20Python%20%E6%9E%84%E5%BB%BA%E6%9C%8D%E5%8A%A1%E5%8C%96%E6%9E%B6%E6%9E%84%E4%B8%AD%E7%9A%84%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E3%80%8B%E5%BC%A0%E5%8D%8E%E7%BF%BC.pdf)
+
+### 2.使用Thrift 
+
+> Thrift 是一款高性能、开源的 RPC 框架，产自 Facebook 后贡献给了 Apache，Thrift 囊括了整个 RPC 的上下游体系，自带序列化编译工具，因为 Thrift 采用的是二进制序列化，并且与 gRPC 一样使用的都是长连接建立 client 与 server 之间的通讯，相比于比传统的使用XML，JSON，SOAP等短连接的解决方案性能要快得多。
+
+[Python RPC 之 Thrift](https://www.jianshu.com/p/82a6bdaabcd3)
+
+[Python Thrift示例](https://blog.csdn.net/dutsoft/article/details/71178655)
+
+[小探python thrift通信框架的设计](http://xiaorui.cc/2016/07/24/%e5%b0%8f%e6%8e%a2python-thrift%e9%80%9a%e4%bf%a1%e6%a1%86%e6%9e%b6%e7%9a%84%e8%ae%be%e8%ae%a1/)
+
+### 3. PIDL - 豆瓣服务化实践 
+
+[为什么豆瓣在 GitHub 上开放自己的 Code？会对国内的开源造成怎样的影响？](https://www.zhihu.com/question/22739289)
+
+[90%产品服务化，细说豆瓣的5年变革之路](http://www.dockone.io/article/2753)
+
+[xxx](http://airjd.com/view/iour88qv000fg4u#2)
+
+## 第十一章、数据处理
+
+### 1.使用MapReduce做日志分析 
+
+### 2.使用DPark 
+
+### 3.使用Pandas 
+
+## 第十二章、帮助工具
+
+### 1.IPython
+
+### 2.Jupyter Notebook 
+
+### 3.调试和DEBUG工具 
+
+### 4.进阶篇: 定制基于IPython的交互解释环境 
+
+## 第十三章、python并发编程
+
+### 1 使用多线程 
+
+### 2 使用Gevent 
+
+### 3 使用多进程
+
+### 4 使用Future  
+
+### 5 使用asyncio 
+
+============================================分割线========================================
+
+待补充
